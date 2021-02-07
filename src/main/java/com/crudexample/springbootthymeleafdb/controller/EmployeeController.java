@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -34,13 +35,13 @@ public class EmployeeController {
     }
 
     @GetMapping("show-new-employee")
-    public String showNewEmployee(Model model) {
+    public String showNewEmployee(@Valid Model model) {
         model.addAttribute("newEmployee", new Employee());
         return "new_employee";
     }
 
     @PostMapping("save-employee")
-    public String saveEmployee(@ModelAttribute("newEmployee") Employee employee) {
+    public String saveEmployee(@Valid @ModelAttribute("newEmployee") Employee employee) {
         employeeService.save(employee);
         return "redirect:/home";
     }

@@ -1,21 +1,26 @@
 package com.crudexample.springbootthymeleafdb.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "employees")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "first_name")
+    @NotNull(message = "Please provide first name")
     private String firstName;
 
     @Column(name = "last_name")
+    @NotNull(message = "Please provide last name")
     private String lastName;
 
     @Column(name = "email")
+    @Email(message = "Please provide valid email address")
     private String email;
 
     public Employee() {
