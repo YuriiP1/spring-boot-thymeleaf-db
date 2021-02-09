@@ -12,7 +12,7 @@
 	<artifactId>spring-boot-thymeleaf-db</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-boot-thymeleaf-db</name>
-	<description>Spring Boot Thymeleaf CRUD project conecting with MySQL database.</description>
+	<description>Spring Boot Thymeleaf CRUD project connecting with MySQL database.</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
