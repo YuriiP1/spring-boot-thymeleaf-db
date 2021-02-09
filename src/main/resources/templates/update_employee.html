@@ -11,6 +11,8 @@
 </head>
 
 <body>
+<div th:replace="fragments/header :: header"></div>
+
 <div class="container">
     <h1>Employee Management System</h1>
     <hr>
@@ -34,6 +36,8 @@
 
     <a th:href="@{/home}"> Back to Employee List</a>
 </div>
+<div th:replace="fragments/footer :: footer"></div>
+
 </body>
 
 </html>

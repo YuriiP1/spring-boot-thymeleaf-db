@@ -6,10 +6,14 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Employee Management System</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
 </head>
 
 <body>
+<div th:replace="fragments/header :: header"></div>
+
 <div class="container">
     <h1>Employee Management System</h1>
     <hr>
@@ -29,6 +33,8 @@
 
     <a th:href="@{/home}"> Back to Employee List</a>
 </div>
+<div th:replace="fragments/footer :: footer"></div>
+
 </body>
 
 </html>
