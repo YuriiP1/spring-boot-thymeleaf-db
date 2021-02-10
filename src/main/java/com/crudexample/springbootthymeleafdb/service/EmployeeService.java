@@ -22,12 +22,19 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
+    public boolean existsById(Long id) {
+        return employeeRepository.existsById(id);
+    }
+
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
 
-    public void save(Employee employee) {
-        employeeRepository.save(employee);
+    public Employee save(Employee employee) throws Exception{
+        if(employee.getId() != null && existsById(employee.getId())) {
+            throw new Exception("Employee with " + employee.getId() + " already exists.");
+        }
+        return employeeRepository.save(employee);
     }
 
     public Employee findById(Long id) {
