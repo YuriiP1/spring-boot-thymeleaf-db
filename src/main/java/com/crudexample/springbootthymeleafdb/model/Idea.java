@@ -1,6 +1,7 @@
 package com.crudexample.springbootthymeleafdb.model;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class Idea {
@@ -11,6 +12,8 @@ public class Idea {
     private String description;
     private String tag;
 
+//    private LocalDateTime createdOn;
+//    private LocalDateTime updatedOn;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "employee_id")
     private Employee author;
