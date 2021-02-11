@@ -41,7 +41,7 @@ public class EmployeeController {
     }
 
     @PostMapping("save-employee")
-    public String saveEmployee(@Valid @ModelAttribute("newEmployee") Employee employee) {
+    public String saveEmployee(@Valid @ModelAttribute("newEmployee") Employee employee) throws Exception {
         employeeService.save(employee);
         return "redirect:/home";
     }
