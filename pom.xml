@@ -15,6 +15,8 @@
 	<description>Spring Boot Thymeleaf CRUD project connecting with MySQL database.</description>
 	<properties>
 		<java.version>11</java.version>
+		<bootstrap.version>4.0.0-2</bootstrap.version>
+<!--		<webjars-locator.version>0.30</webjars-locator.version>-->
 	</properties>
 	<dependencies>
 		<dependency>
@@ -41,8 +43,8 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -56,6 +58,18 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>7.0.0.Final</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>${bootstrap.version}</version>
+		</dependency>
+
+		<!--		<dependency>-->
+		<!--			<groupId>org.webjars</groupId>-->
+		<!--			<artifactId>webjars-locator</artifactId>-->
+		<!--			<version>${webjars-locator.version}</version>-->
+		<!--		</dependency>-->
 
 	</dependencies>
 
