@@ -22,12 +22,6 @@ public class PersonController {
         this.personService = personService;
     }
 
-//    @GetMapping("home")
-//    public String viewHomePage(Model model) {
-//        model.addAttribute("employees", employeeService.getAllEmployees());
-//        return "home";
-//    }
-
     @GetMapping("home")
     public String viewHomePage(Model model) {
         findPaginated(1, "firstName","asc", model);
@@ -41,7 +35,7 @@ public class PersonController {
     }
 
     @PostMapping("save-person")
-    public String savePerson(@Valid @ModelAttribute("newPerson") Person person) throws Exception {
+    public String savePerson(@ModelAttribute("newPerson") @Valid Person person){
         personService.save(person);
         return "redirect:/home";
     }

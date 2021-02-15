@@ -7,13 +7,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PersonService {
+public class PersonService implements UserDetailsService {
 
     private PersonRepository personRepository;
 
@@ -30,10 +33,10 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-    public Person save(Person person) throws Exception{
-        if(person.getId() != null && existsById(person.getId())) {
-            throw new Exception("Person with " + person.getId() + " already exists.");
-        }
+    public Person save(Person person){
+//        if(person.getId() != null && existsById(person.getId())) {
+//            throw new Exception("Person with " + person.getId() + " already exists.");
+//        }
         return personRepository.save(person);
     }
 
@@ -62,5 +65,10 @@ public class PersonService {
 
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
         return this.personRepository.findAll(pageable);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return personRepository.findByUsername(username);
     }
 }

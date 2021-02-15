@@ -1,58 +1,38 @@
-<!doctype html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="utf-8">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Sign in</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+  <style>
+    body {
+    	background-color: gray;
+    	color: white;
+    }
+    </style>
+</head>
 
-    <title>Sign in</title>
+<body>
+<div class="container">
+  <form class="form-signin" method="post" action="/login">
+    <h2 class="form-signin-heading">Please login</h2>
+    <p>
+      <label for="username" class="sr-only">Username</label>
+      <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="">
+    </p>
+    <p>
+      <label for="password" class="sr-only">Password</label>
+      <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+    </p>
+    <p>
+      Remember me
+      <input type="checkbox" id="remember-me" name="password" class="form-control">
+    </p>
 
-    <!-- Bootstrap core CSS -->
-<!--    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>-->
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
-
-    <!-- Custom styles for this template -->
-<!--    <link th:href="@{/css/login.css}" rel="stylesheet">-->
-  </head>
-  <body class="text-center">
-  <div class="container">
-
-    <div class="row" style="margin-top:20px">
-      <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-        <form th:action="@{/login}" method="post">
-          <fieldset>
-            <h1>Please Sign In</h1>
-
-            <div th:if="${param.error}">
-              <div class="alert alert-danger">
-                Invalid username and password.
-              </div>
-            </div>
-            <div th:if="${param.logout}">
-              <div class="alert alert-info">
-                You have been logged out.
-              </div>
-            </div>
-
-            <div class="form-group">
-              <input type="text" name="username" id="username" class="form-control input-lg"
-                     placeholder="UserName" required="true" autofocus="true"/>
-            </div>
-            <div class="form-group">
-              <input type="password" name="password" id="password" class="form-control input-lg"
-                     placeholder="Password" required="true"/>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-6 col-sm-6 col-md-6">
-                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In"/>
-              </div>
-              <div class="col-xs-6 col-sm-6 col-md-6">
-              </div>
-            </div>
-          </fieldset>
-        </form>
-      </div>
-    </div>
-
-  </div>
-</body>
-</html>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+  </form>
+  <button class="btn btn-lg btn-info btn-block" type="submit" ><a th:href="@{/registration}">Register</a></button>
+</div>
+</body></html>

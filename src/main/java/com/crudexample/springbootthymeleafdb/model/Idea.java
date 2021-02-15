@@ -21,6 +21,12 @@ public class Idea {
     public Idea() {
     }
 
+    public Idea(String name, String description, String tag) {
+        this.name = name;
+        this.description = description;
+        this.tag = tag;
+    }
+
     public Idea(String name, String description, String tag, Person author) {
         this.name = name;
         this.description = description;

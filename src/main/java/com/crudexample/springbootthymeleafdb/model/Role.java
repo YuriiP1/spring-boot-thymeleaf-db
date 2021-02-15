@@ -1,5 +1,13 @@
 package com.crudexample.springbootthymeleafdb.model;
 
-public enum Role {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+public enum Role implements GrantedAuthority {
     USER;
+
+    @Override
+    public String getAuthority() {
+        return name();
+    }
 }
