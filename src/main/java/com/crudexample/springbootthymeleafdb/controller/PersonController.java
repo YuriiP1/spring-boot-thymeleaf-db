@@ -1,7 +1,7 @@
 package com.crudexample.springbootthymeleafdb.controller;
 
-import com.crudexample.springbootthymeleafdb.model.Employee;
-import com.crudexample.springbootthymeleafdb.service.EmployeeService;
+import com.crudexample.springbootthymeleafdb.model.Person;
+import com.crudexample.springbootthymeleafdb.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -13,13 +13,13 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/")
-public class EmployeeController {
+public class PersonController {
 
-    private EmployeeService employeeService;
+    private PersonService personService;
 
     @Autowired
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
+    public PersonController(PersonService personService) {
+        this.personService = personService;
     }
 
 //    @GetMapping("home")
@@ -34,27 +34,27 @@ public class EmployeeController {
         return "home";
     }
 
-    @GetMapping("show-new-employee")
-    public String showNewEmployee(@Valid Model model) {
-        model.addAttribute("newEmployee", new Employee());
-        return "new_employee";
+    @GetMapping("show-new-person")
+    public String showNewPerson(@Valid Model model) {
+        model.addAttribute("newPerson", new Person());
+        return "new_person";
     }
 
-    @PostMapping("save-employee")
-    public String saveEmployee(@Valid @ModelAttribute("newEmployee") Employee employee) throws Exception {
-        employeeService.save(employee);
+    @PostMapping("save-person")
+    public String savePerson(@Valid @ModelAttribute("newPerson") Person person) throws Exception {
+        personService.save(person);
         return "redirect:/home";
     }
 
-    @GetMapping("show-new-employee/{id}")
-    public String showEmployeeById(@PathVariable Long id, Model model) {
-        model.addAttribute("employee", employeeService.findById(id));
-        return "update_employee";
+    @GetMapping("show-new-person/{id}")
+    public String showPersonById(@PathVariable Long id, Model model) {
+        model.addAttribute("person", personService.findById(id));
+        return "update_person";
     }
 
-    @GetMapping("delete-employee/{id}")
+    @GetMapping("delete-person/{id}")
     public String deleteById(@PathVariable Long id){
-        employeeService.deleteById(id);
+        personService.deleteById(id);
         return "redirect:/home";
     }
 
@@ -65,9 +65,9 @@ public class EmployeeController {
                                 Model model) {
         int pageSize = 5;
 
-        Page<Employee> page = employeeService.findPaginated(pageNo, pageSize,sortField,sortDirection);
+        Page<Person> page = personService.findPaginated(pageNo, pageSize,sortField,sortDirection);
 
-        List<Employee> employeeList = page.getContent();
+        List<Person> personList = page.getContent();
 
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages",page.getTotalPages());
@@ -77,7 +77,7 @@ public class EmployeeController {
         model.addAttribute("sortDirection",sortDirection);
         model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc".toUpperCase() : "asc".toUpperCase());
 
-        model.addAttribute("employees",employeeList);
+        model.addAttribute("persons", personList);
 
         return "home";
     }

@@ -1,7 +1,6 @@
 package com.crudexample.springbootthymeleafdb.model;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 public class Idea {
@@ -16,12 +15,12 @@ public class Idea {
 //    private LocalDateTime updatedOn;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "employee_id")
-    private Employee author;
+    private Person author;
 
     public Idea() {
     }
 
-    public Idea(String name, String description, String tag, Employee author) {
+    public Idea(String name, String description, String tag, Person author) {
         this.name = name;
         this.description = description;
         this.tag = tag;
@@ -60,11 +59,11 @@ public class Idea {
         this.tag = tag;
     }
 
-    public Employee getAuthor() {
+    public Person getAuthor() {
         return author;
     }
 
-    public void setAuthor(Employee author) {
+    public void setAuthor(Person author) {
         this.author = author;
     }
 }

@@ -19,7 +19,7 @@
     <hr>
     <h2>Save Employee</h2>
 
-    <form action="#" th:action="@{/save-employee}" th:object="${newEmployee}" method="POST">
+    <form action="#" th:action="@{/save-person}" th:object="${newEmployee}" method="POST">
         <input type="text" th:field="*{firstName}" placeholder="First Name" class="form-control mb-4 col-4">
 
         <input type="text" th:field="*{lastName}" placeholder="Last Name" class="form-control mb-4 col-4">

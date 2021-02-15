@@ -5,8 +5,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "employees")
-public class Employee {
+@Table(name = "persons")
+public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,11 +23,11 @@ public class Employee {
     @Email(message = "Please provide valid email address")
     private String email;
 
-    public Employee() {
+    public Person() {
 
     }
 
-    public Employee(String firstName, String lastName, String email) {
+    public Person(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
