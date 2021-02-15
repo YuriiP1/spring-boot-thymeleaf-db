@@ -3,9 +3,10 @@ package com.crudexample.springbootthymeleafdb.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "idea")
 public class Idea {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String description;
@@ -14,7 +15,7 @@ public class Idea {
 //    private LocalDateTime createdOn;
 //    private LocalDateTime updatedOn;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "person_id")
     private Person author;
 
     public Idea() {
@@ -65,5 +66,9 @@ public class Idea {
 
     public void setAuthor(Person author) {
         this.author = author;
+    }
+
+    public String getAuthorName() {
+        return author !=null ? author.getFirstName() : "default";
     }
 }

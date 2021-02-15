@@ -52,6 +52,10 @@ public class PersonService {
         personRepository.deleteById(id);
     }
 
+    public Person findPersonByUsername(String username) {
+        return personRepository.findByUsername(username);
+    }
+
     public Page<Person> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
         Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :
                 Sort.by(sortField).descending();

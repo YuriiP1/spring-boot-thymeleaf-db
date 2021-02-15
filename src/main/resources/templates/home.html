@@ -2,13 +2,15 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Employee List</title>
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous">
+    <title>Person List</title>
+<!--    <link rel="stylesheet"-->
+<!--          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"-->
+<!--          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"-->
+<!--          crossorigin="anonymous">-->
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
     <link rel="stylesheet" th:href="@{/static/css/styles.css}">
-    <div th:style="'background:url(' + @{/img/back1.jpg} + ');'"></div>
+<!--    <div th:style="'background:url(' + @{/img/back1.jpg} + ');'"></div>-->
 
 </head>
 <body>
@@ -16,8 +18,8 @@
 <div th:replace="fragments/header :: header"></div>
 
 <div class="container my-2">
-    <a th:href="@{/show-new-person}" class="btn btn-primary btn-sm mb-3"> Add New Employee </a>
-    <h1>Employees</h1>
+    <a th:href="@{/show-new-person}" class="btn btn-primary btn-sm mb-3"> Add New Person </a>
+    <h1>Persons</h1>
     <table class="table">
         <thead class="table-light">
         <tr>
@@ -38,10 +40,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:if="${employees.empty}">
-            <td colspan="4" bgcolor="red"> No Employees </td>
+        <tr th:if="${persons.empty}">
+            <td colspan="4" bgcolor="red"> No Persons </td>
         </tr>
-        <tr th:each="person : ${employees}">
+        <tr th:each="person : ${persons}">
             <td th:text="${person.id}"></td>
             <td th:text="${person.firstName}"></td>
             <td th:text="${person.lastName}"></td>

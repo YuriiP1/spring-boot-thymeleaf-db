@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Spring Security Example </title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+<body>
+
+<!--<div th:if="${message}">-->
+<!--    <span th:text="${message}"></span>-->
+<!--</div>-->
+<form  th:action="@{/registration}" th:object="${person}" method="post" >
+    <h2 class="form-signin-heading">Create your account</h2>
+    <div class="form-group">
+        <input type="text" th:field="*{username}" class="form-control" placeholder="Username"
+               autofocus="true">
+    </div>
+    <div class="form-group">
+        <input type="password" th:field="*{password}" class="form-control" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <input type="text" th:field="*{firstName}" class="form-control" placeholder="FirstName">
+    </div>
+    <div class="form-group">
+        <input type="text" th:field="*{lastName}" class="form-control" placeholder="LastName">
+    </div>
+    <div class="form-group">
+        <input type="text" th:field="*{email}" class="form-control" placeholder="name@example.com">
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+</form>
+</body>
+</html>

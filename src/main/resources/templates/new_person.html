@@ -6,32 +6,34 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Employee Management System</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous">
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"-->
+<!--          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"-->
+<!--          crossorigin="anonymous">-->
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
 </head>
 
 <body>
 <div th:replace="fragments/header :: header"></div>
 
 <div class="container">
-    <h1>Employee Management System</h1>
+    <h1>Person Management System</h1>
     <hr>
-    <h2>Save Employee</h2>
+    <h2>Save Person</h2>
 
-    <form action="#" th:action="@{/save-person}" th:object="${newEmployee}" method="POST">
+    <form action="#" th:action="@{/save-person}" th:object="${newPerson}" method="POST">
         <input type="text" th:field="*{firstName}" placeholder="First Name" class="form-control mb-4 col-4">
 
         <input type="text" th:field="*{lastName}" placeholder="Last Name" class="form-control mb-4 col-4">
 
         <input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
 
-        <button type="submit" class="btn btn-info col-2"> Save Employee</button>
+        <button type="submit" class="btn btn-info col-2"> Save Person</button>
     </form>
 
     <hr>
 
-    <a th:href="@{/home}"> Back to Employee List</a>
+    <a th:href="@{/home}"> Back to Person List</a>
 </div>
 <div th:replace="fragments/footer :: footer"></div>
 
