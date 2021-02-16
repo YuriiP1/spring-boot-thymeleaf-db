@@ -11,23 +11,36 @@
 <body>
 <div th:replace="fragments/header :: header"></div>
     <div class="container my-2">
-        <form method="post">
+        <form action="#" th:action="@{/idea}" th:object="${newIdea}" method="POST">
+
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Name Idea</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name">
+            <input type="text" th:field="*{name}" class="form-control" id="exampleFormControlInput1" placeholder="name">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Idea description</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+            <textarea class="form-control" th:field="*{description}" id="exampleFormControlTextarea1" rows="10"></textarea>
         </div>
             <div class="mb-3">
                 <label for="tag" class="form-label">Tag</label>
-                <input type="text" class="form-control" id="tag" placeholder="tag">
+                <input type="text" th:field="*{tag}" class="form-control" id="tag" placeholder="tag">
             </div>
         <button type="submit" class="btn btn-success col-2"> Submit Idea</button>
         </form>
     </div>
-
+    <div class="container my-2">
+            <div class="col-md-12" th:each="idea : ${ideas}">
+                <h1 th:text="${idea.name}" ></h1>
+                <p th:text="${idea.description}"></p>
+                <div>
+                    <span class="badge">Posted 2012-08-02 20:47:04</span>
+                    <div class="pull-right">
+                        <span class="label label-info" th:text="${idea.tag}">personal</span>
+                        <span class="label label-info" th:text="${idea.getAuthorName}">personal</span></div>
+                </div>
+                <hr>
+            </div>
+    </div>
 
 <div th:replace="fragments/footer :: footer"></div>
 
