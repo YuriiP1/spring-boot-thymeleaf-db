@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,6 +38,8 @@ public class PersonService implements UserDetailsService {
 //        if(person.getId() != null && existsById(person.getId())) {
 //            throw new Exception("Person with " + person.getId() + " already exists.");
 //        }
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        person.setPassword(encoder.encode(person.getPassword()));
         return personRepository.save(person);
     }
 

@@ -45,6 +45,7 @@ public class RegistrationController {
         }
         person.setActive(true);
         person.setRoles(Collections.singleton(Role.USER));
+
         try {
             personService.save(person);
         } catch (Exception e) {
