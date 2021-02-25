@@ -32,6 +32,10 @@
     <h2>Save Person</h2>
 
     <form action="#" th:action="@{/save-person}" th:object="${newPerson}" method="POST">
+        <input type="text" th:field="*{username}" placeholder="Username" class="form-control mb-4 col-4">
+
+        <input type="password" th:field="*{password}" placeholder="Password" class="form-control mb-4 col-4">
+
         <input type="text" th:field="*{firstName}" placeholder="First Name" class="form-control mb-4 col-4">
 
         <input type="text" th:field="*{lastName}" placeholder="Last Name" class="form-control mb-4 col-4">
