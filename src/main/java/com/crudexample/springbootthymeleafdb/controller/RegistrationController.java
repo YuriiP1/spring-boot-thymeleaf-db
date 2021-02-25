@@ -43,8 +43,6 @@ public class RegistrationController {
         if(result.hasErrors()) {
             return "registration";
         }
-        person.setActive(true);
-        person.setRoles(Collections.singleton(Role.USER));
 
         try {
             personService.save(person);

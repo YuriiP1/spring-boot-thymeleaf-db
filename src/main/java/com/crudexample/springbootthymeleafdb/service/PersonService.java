@@ -1,6 +1,7 @@
 package com.crudexample.springbootthymeleafdb.service;
 
 import com.crudexample.springbootthymeleafdb.model.Person;
+import com.crudexample.springbootthymeleafdb.model.Role;
 import com.crudexample.springbootthymeleafdb.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,10 +37,9 @@ public class PersonService implements UserDetailsService {
     }
 
     public Person save(Person person){
-//        if(person.getId() != null && existsById(person.getId())) {
-//            throw new Exception("Person with " + person.getId() + " already exists.");
-//        }
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        person.setActive(true);
+        person.setRoles(Collections.singleton(Role.USER));
         person.setPassword(encoder.encode(person.getPassword()));
         return personRepository.save(person);
     }
