@@ -73,6 +73,10 @@ public class PersonService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return personRepository.findByUsername(username);
+        Person person = personRepository.findByUsername(username);
+        if(person == null) {
+            throw new UsernameNotFoundException("User not found!");
+        }
+        return person;
     }
 }
